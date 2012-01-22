@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-require 'update'
+require "update"
+require "slop"
 
 opts = Slop.parse(:help => true, :banner => "Update script for running commands.rb.") do
   on :v, :version, 'Print version information'
