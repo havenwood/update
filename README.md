@@ -8,9 +8,9 @@ Edit the lists of commands in commands.rb by modifying the Hash of commands and 
   
 Run your updates with one command:
 
-  update
+  `update`
   
 Basic options:
 
-  update -v
-  update -h
+  `update -v`
+  `update -h`
