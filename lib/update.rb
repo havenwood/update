@@ -14,9 +14,9 @@ module Update
     private
     
     def run_each_command
-      COMMANDS.each do |command, task|
-        green task
-        puts `#{command}`
+      COMMANDS.each do |command, description|
+        green description
+        puts `command`
         check_for_failures
       end
     end
@@ -32,7 +32,7 @@ module Update
       unless @failed
         green "Update process completed successfully."
       else
-        red "Update process completed with failures.\a"
+        red "Update process completed with failures.\a" #chirp
       end
     end
   end
