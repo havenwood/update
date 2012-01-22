@@ -1,7 +1,6 @@
 require "update/version"
 require "update/red-green"
 require "update/commands"
-require "slop"
 
 module Update
   extend RedGreen
