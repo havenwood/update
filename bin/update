@@ -6,6 +6,7 @@ opts = Slop.parse(:help => true, :banner => "Usage: update [OPTIONS]") do
   on :v, :version, 'Print version information' do
     puts "Update version #{Update::VERSION} on Ruby #{RUBY_VERSION}"
     exit
+  end
 end
 
 Update.run
