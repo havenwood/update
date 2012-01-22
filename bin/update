@@ -8,5 +8,5 @@ end
 unless opts.version? 
   Update.run
 else
-  puts VERSION
+  puts Update::VERSION
 end
