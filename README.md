@@ -1,7 +1,16 @@
-# Update
+### Update
 
-Update is a script for running command line updates.
+Update is a simple Ruby script for running sets of updates from your command line.
 
-RedGreen is just a light module for pretty red and green in your console.
+Edit the lists of commands in commands.rb by modifying the Hash of commands and explanations:
 
-Add commands to commands.rb and run your script with './update'.
+  COMMANDS = { "locate toasters", "finds all the toasters" }
+  
+Run your updates with one command:
+
+  update
+  
+Basic options:
+
+  update -v
+  update -h
