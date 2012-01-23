@@ -10,7 +10,7 @@ module Update
     private
     
     def run_each_command
-      COMMANDS.each do |command, description|
+      Update::COMMANDS.each do |command, description|
         green description
         puts `#{command}`
         check_for_failures
