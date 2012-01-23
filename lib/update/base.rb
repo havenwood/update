@@ -1,6 +1,4 @@
 module Update
-  extend RedGreen
-
   class << self
     def run
       run_each_command
@@ -13,23 +11,25 @@ module Update
       Update::COMMANDS.each do |command, description|
         green description
         puts `#{command}`
-        check_for_failures
+        check_for_failures command
       end
     end
     
-    def check_for_failures
-      @status ||= "status"
+    def check_for_failures command
       unless $?.success?
-        @status.taint
+        @failed_commands ||= []
+        @failed_commands << command
         red "Command failed."
       end
     end
 
     def report_final_status
-      unless @status.tainted?
-        green "Update process completed successfully."
+      if @failed_commands
+        red "Update process completed with failures.\a"
+        puts
+        red "#{@failed_commands}"
       else
-        red "Update process completed with failures.\a" #chirp
+        green "Update process completed successfully."
       end
     end
   end
