@@ -31,9 +31,8 @@ module Update
 
     def report_final_status
       if @failed_commands
-        red "Update process completed with failures.\a"
-        puts
-        red "#{@failed_commands}"
+        red "Update process completed with failures.\a" #chirp
+        puts "", "#{@failed_commands}"
       else
         green "Update process completed successfully."
       end
