@@ -19,7 +19,7 @@ module Update
     
     def check_for_failures
       unless $?.success?
-        @failed = true
+        @failed ||= true
         red "Command failed."
       end
     end
