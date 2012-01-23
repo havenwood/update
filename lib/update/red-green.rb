@@ -1,4 +1,4 @@
-module Update
+module RedGreen
   RED, GREEN = "tput setaf 1", "tput setaf 2"
   RESET = "tput sgr0"
   
