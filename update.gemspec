@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["shan"]
   s.email       = ["shannonskipper@gmail.com"]
   s.homepage    = "https://github.com/havenwood/update"
-  s.summary     = %q{simple command line updater script in Ruby}
-  s.description = %q{update script for updating yer things}
+  s.summary     = %q{a gem to run a list of updates}
+  s.description = %q{A Ruby Gem for running a list of update commands from command line.}
 
   s.rubyforge_project = "update"
 
