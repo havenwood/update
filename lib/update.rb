@@ -1,39 +1,14 @@
 require "update/version"
 require "update/red-green"
-require "update/commands"
+require "update/base"
 
-module Update
-  extend RedGreen
-
-  class << self
-    def run
-      run_each_command
-      report_final_status
-    end
-    
-    private
-    
-    def run_each_command
-      COMMANDS.each do |command, description|
-        green description
-        puts `#{command}`
-        check_for_failures
-      end
-    end
-    
-    def check_for_failures
-      unless $?.success?
-        @failed = true
-        red "Command failed."
-      end
-    end
-
-    def report_final_status
-      unless @failed
-        green "Update process completed successfully."
-      else
-        red "Update process completed with failures.\a" #chirp
-      end
-    end
-  end
-end
+COMMANDS = { "brew update" => "Checking for updated Brew packages...",
+             "brew upgrade" => "Installing updated Brew packages...",
+             "brew cleanup --force" => "Cleaning up outdated packages...",
+             "rvm get head --auto" => "Get the latest RVM...",
+             "rvm 1.9.3-head do gem update --system" => "Update 1.9.3's RubyGems version...",
+             "rvm 1.9.3-head do gem update" => "Update 1.9.3 gems...",
+             "rvm 1.9.3-head do gem cleanup -d" => "Show 1.9.3 gem cleanup dry-run...",
+             "rvm rbx-head do gem update --system" => "Update Rubinius' RubyGems version...",
+             "rvm rbx-head do gem update" => "Update Rubinius gems...",
+             "rvm rbx-head do gem cleanup -d" => "Show Rubinius gem cleanup dry-run..." }
