@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Update::VERSION
   s.authors     = ["shan"]
   s.email       = ["shannonskipper@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/havenwood/update"
   s.summary     = %q{simple command line updater script in Ruby}
   s.description = %q{update script for updating yer things}
 
