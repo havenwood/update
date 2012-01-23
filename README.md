@@ -1,7 +1,5 @@
 # Update: a gem to run a list of updates
 Update is a simple Ruby script for running sets of updates from your command line.
-##Requirements
-Requires Ruby (http://www.ruby-lang.org/).
 ##Installation and usage
 ```ruby
 gem install update
