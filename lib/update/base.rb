@@ -18,14 +18,15 @@ module Update
     end
     
     def check_for_failures
+      @status = "status"
       unless $?.success?
-        @failed ||= true
+        @status.taint
         red "Command failed."
       end
     end
 
     def report_final_status
-      unless @failed
+      unless @status.tainted?
         green "Update process completed successfully."
       else
         red "Update process completed with failures.\a" #chirp
