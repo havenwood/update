@@ -1,13 +1,17 @@
 module RedGreen
+  GREEN = "tput setaf 2"
+  RED   = "tput setaf 1"
+  RESET = "tput sgr0"
+  
   def green message
-    system "tput setaf 2" #color green
+    system GREEN
     puts message
-    system "tput sgr0" #color reset
+    system RESET
   end
 
   def red message
-    system "tput setaf 1" #color red
+    system RED
     puts message
-    system "tput sgr0" #color reset
+    system RESET
   end
 end

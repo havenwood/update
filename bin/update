@@ -3,8 +3,8 @@ require "update"
 require "slop"
 
 opts = Slop.parse(:help => true, :banner => "Usage: update [options]") do
-  on :v, :version, 'Print version information' do
-    puts "Update version #{Update::VERSION} on Ruby #{RUBY_VERSION}"
+  on :v, :version, "Print version information" do
+    puts "Update Gem version #{Update::VERSION} on Ruby #{RUBY_VERSION}"
     puts "Shannon Skipper <shannonskipper@gmail.com>"
     exit
   end
