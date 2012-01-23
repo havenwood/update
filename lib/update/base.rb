@@ -18,7 +18,7 @@ module Update
     end
     
     def check_for_failures
-      @status = "status"
+      @status ||= "status"
       unless $?.success?
         @status.taint
         red "Command failed."
