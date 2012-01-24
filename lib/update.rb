@@ -23,16 +23,16 @@ module Update
     
     def check_for_failures command
       unless $?.success?
-        @failed_commands ||= []
-        @failed_commands << command
+        @failed ||= []
+        @failed << command
         red "Command failed."
       end
     end
 
     def report_final_status
-      if @failed_commands
+      if @failed
         red "Update process completed with failures.\a" #chirp
-        @failed_commands.each { |failed_command| puts "Command failed: '#{failed_command}'" }
+        @failed.each { |command| puts "Command failed: '#{command}'" }
       else
         green "Update process completed successfully."
       end
