@@ -16,13 +16,17 @@ module Update
     def run_commands
       Update::COMMANDS.each do |command, description|
         green description
-        IO.popen(command) do |io|
-          while (line = io.gets) do
-            puts line
-          end
-        end
+        run_command_and_print_output
         check_for_failures command
       end
+    end
+    
+    def run_command_and_print_output
+      IO.popen(command) do |io|
+        puts io.readline
+      end
+    ensure
+      io.close
     end
     
     def check_for_failures command
