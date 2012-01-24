@@ -7,16 +7,20 @@ module Update
   
   class << self
     def run
-      run_each_command
-      report_final_status
+      run_commands
+      report_status
     end
     
     private
     
-    def run_each_command
+    def run_commands
       Update::COMMANDS.each do |command, description|
         green description
-        puts `#{command}`
+        IO.popen(command) do |io|
+          while (line = io.gets) do
+            puts line
+          end
+        end
         check_for_failures command
       end
     end
@@ -29,7 +33,7 @@ module Update
       end
     end
 
-    def report_final_status
+    def report_status
       if @failed
         red "Update process completed with failures.\a" #chirp
         @failed.each { |command| puts "Command failed: '#{command}'" }
