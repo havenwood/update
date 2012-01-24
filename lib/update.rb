@@ -25,8 +25,6 @@ module Update
       IO.popen(command) do |io|
         puts io.readline
       end
-    ensure
-      io.close
     end
     
     def check_for_failures command
