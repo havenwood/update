@@ -31,11 +31,11 @@ module Update
     def check_for_failures
       unless $?.success?
         @failed ||= []
-        @failed << command
+        @failed << @command
         red "Command failed."
       end
     end
-
+    
     def report_status
       if @failed
         red "Update process completed with failures.\a" #chirp
