@@ -25,6 +25,7 @@ module Update
     def run_command_and_print_output
       IO.popen @command do |io|
         puts io.read
+        io.close
       end
     end
     
