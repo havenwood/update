@@ -39,7 +39,9 @@ module Update
     def report_status
       if @failed
         red "Update process completed with failures.\a" #chirp
-        @failed.each { |command| puts "Command failed: '#{command}'" }
+        @failed.each do |command|
+          puts "Command failed: '#{command}'"
+        end
       else
         green "Update process completed successfully."
       end
