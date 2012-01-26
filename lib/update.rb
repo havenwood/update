@@ -17,14 +17,8 @@ module Update
       Update::COMMANDS.each do |command, description|
         @command = command
         green description
-        run_command_printing_output
+        puts system "#{command}"
         check_for_failures
-      end
-    end
-    
-    def run_command_printing_output
-      IO.popen @command do |io|
-        puts io.read
       end
     end
     
