@@ -4,7 +4,7 @@ require "update/version"
 
 module Update
   extend RedGreen
-  
+
   class << self
     def run
       run_commands
@@ -17,32 +17,27 @@ module Update
       Update::COMMANDS.each do |command, description|
         @command = command
         green description
-        run_command_and_print_output
+        run_command_printing_output
         check_for_failures
       end
     end
     
-    def run_command_and_print_output
-      IO.popen @command do |io|
-        puts io.read
-        io.close
-      end
+    def run_command_printing_output
+      IO.popen @command { |io| puts io.read }
     end
     
     def check_for_failures
       unless $?.success?
         @failed ||= []
         @failed << @command
-        red "Command failed."
+        red "Command failed: '#{@command}'"
       end
     end
     
     def report_status
       if @failed
         red "Update process completed with failures.\a" #chirp
-        @failed.each do |command|
-          puts "Command failed: '#{command}'"
-        end
+        @failed.each { |this_failed| puts "Command failed: '#{this_failed}'" }
       else
         green "Update process completed successfully."
       end
