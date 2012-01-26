@@ -23,7 +23,9 @@ module Update
     end
     
     def run_command_printing_output
-      IO.popen @command { |io| puts io.read }
+      IO.popen @command do |io|
+        puts io.read
+      end
     end
     
     def check_for_failures
