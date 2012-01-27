@@ -17,7 +17,7 @@ module Update
       Update::COMMANDS.each do |command, description|
         @command = command
         green description
-        puts system "#{command}"
+        puts `#{command}`
         check_for_failures
       end
     end
