@@ -17,17 +17,17 @@ module Update
       Update::COMMANDS.each do |groups_of_commands|
         groups_of_commands.each do |run_together|
           @group = run_together
-          run_group_of_commands_in_new_thread
+          run_group_in_new_thread
         end
       end
     end
       
-    def run_group_of_commands_in_new_thread
+    def run_group_in_new_thread
       Thread.new do
         @group.each do |command, description|
           @command, @description = command, description
           run_command
-          check_for_failures
+          check_exit_status
           printout
         end
       end
@@ -38,7 +38,7 @@ module Update
       @command_output = _
     end
     
-    def check_for_failures
+    def check_exit_status
       unless $?.success?
         @failed ||= []
         @failed << @command
