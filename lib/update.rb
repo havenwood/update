@@ -29,10 +29,10 @@ module Update
     end
     
     def run_command
-      `#{command}`
+      `#{@command}`
       @command_output = _
     end
-    
+
     def check_exit_status
       unless $?.success?
         @failed ||= []
