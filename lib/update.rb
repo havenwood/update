@@ -26,7 +26,7 @@ module Update
               
               green description
               puts command_output
-              red @completion_status
+              red @failure_report if @failure_report
             end
           end
         end
@@ -37,7 +37,7 @@ module Update
       unless $?.success?
         @failed ||= []
         @failed << @command
-        @completion_status = "Command failed: '#{@command}'"
+        @failure_report = "Command failed: '#{@command}'"
       end
     end
     
