@@ -9,7 +9,7 @@ module Update
     def run
       Update::COMMANDS.each do |groups_of_commands|
         groups_of_commands.each do |run_together|
-          @group = run_together
+          @commands = run_together
           run_group_in_new_thread
         end.join { report_status }
       end
@@ -19,7 +19,7 @@ module Update
     
     def run_group_in_new_thread
       Thread.new do
-        @group.each do |command, description|
+        @commands.each do |command, description|
           @command, @description = command, description
           run_command
           check_exit_status
