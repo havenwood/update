@@ -1,9 +1,9 @@
 require "update/commands"
-require "update/red-green"
+require "update/rainbow"
 require "update/version"
 
 module Update
-  extend RedGreen
+  extend Rainbow
 
   class << self
     def run
