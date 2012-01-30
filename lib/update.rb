@@ -20,14 +20,13 @@ module Update
           Thread.new do
             @run_together.each do |command, description|
               @command = command
-              [ Thread.current[:description] = { green description },
-                Thread.current[:command] = { puts `#{command}` },
-                Thread.current[:failures] = { check_for_failures }
-              ].each do |thread|
-                  thread.join
-                  puts thread.description, thread.command, thread.failures
-                end
-              end
+              
+              `#{command}`; command_output = _
+              check_for_failures
+              
+              green description
+              puts command_output
+              red @completion_status
             end
           end
         end
@@ -38,7 +37,7 @@ module Update
       unless $?.success?
         @failed ||= []
         @failed << @command
-        red "Command failed: '#{@command}'"
+        @completion_status = "Command failed: '#{@command}'"
       end
     end
     
