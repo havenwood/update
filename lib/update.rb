@@ -25,7 +25,7 @@ module Update
           check_exit_status
           printout
         end
-      end
+      end.run
     end
     
     def run_command
