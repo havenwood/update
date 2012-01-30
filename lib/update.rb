@@ -30,7 +30,7 @@ module Update
     
     def run_command
       IO.popen(@command) do |io|
-        @command_output = io.readline
+        @command_output = io.readlines
       end
     end
 
