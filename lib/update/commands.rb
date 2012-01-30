@@ -5,7 +5,7 @@ module Update
     "brew cleanup --force" => "Cleaning up outdated packages..." },{
       
     ##
-    # Create additional command groups by uncommenting the following-ish:
+    # Create additional command-groups by uncommenting the following-ish:
     
     # "ls -la" => "Look around...",
     # "uname -a" => "Whatchamacallit..." },{
