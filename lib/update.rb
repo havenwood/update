@@ -29,7 +29,7 @@ module Update
     end
     
     def run_command
-      @command_output = `@command`
+      @command_output = `#{@command}`
     end
 
     def check_exit_status
