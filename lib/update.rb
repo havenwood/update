@@ -7,8 +7,8 @@ module Update
 
   class << self
     def run
-      Update::COMMANDS.each do |groups_of_commands|
-        groups_of_commands.each do |run_together|
+      Update::COMMANDS.each do |together|
+        together.each do |run_together|
           @commands = run_together
           run_in_new_thread
         end.join { report_status }
