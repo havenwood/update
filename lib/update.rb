@@ -16,16 +16,16 @@ module Update
     def run_commands
       Update::COMMANDS.each do |groups_of_commands|
         groups_of_commands.each do |run_together|
-          @run_together = run_together
-          run_groups_of_commands_together_in_new_thread
+          @group = run_together
+          run_group_of_commands_in_new_thread
         end
       end
     end
       
-    def run_groups_of_commands_together_in_new_thread
+    def run_group_of_commands_in_new_thread
       Thread.new do
-        @run_together.each do |command, description|
-          @command = command
+        @group.each do |command, description|
+          @command, @description = command, description
           run_command
           check_for_failures
           printout
@@ -34,7 +34,8 @@ module Update
     end
     
     def run_command
-      `#{command}`; command_output = _
+      `#{command}`
+      @command_output = _
     end
     
     def check_for_failures
@@ -46,8 +47,8 @@ module Update
     end
     
     def printout
-      green description
-      puts command_output
+      green @description
+      puts @command_output
       red @failure_report if @failure_report
     end
     
