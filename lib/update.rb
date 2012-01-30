@@ -17,23 +17,24 @@ module Update
       Update::COMMANDS.each do |command_group|
         command_group.each do |run_together|
           @run_together = run_together
-          Thread.new do
-            @run_together.each do |command, description|
-              @command = command
-              
-              `#{command}`; command_output = _
-              check_for_failures
-              print_io
-            end
-          end
+          run_group_of_commands_in_new_thread
+        end
+      end
+    end
+      
+    def run_group_of_commands_in_new_thread
+      Thread.new do
+        @run_together.each do |command, description|
+          @command = command
+          run_command
+          check_for_failures
+          printout
         end
       end
     end
     
-    def print_io
-      green description
-      puts command_output
-      red @failure_report if @failure_report
+    def run_command
+      `#{command}`; command_output = _
     end
     
     def check_for_failures
@@ -42,6 +43,12 @@ module Update
         @failed << @command
         @failure_report = "Command failed: '#{@command}'"
       end
+    end
+    
+    def printout
+      green description
+      puts command_output
+      red @failure_report if @failure_report
     end
     
     def report_status
