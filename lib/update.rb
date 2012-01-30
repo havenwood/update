@@ -29,8 +29,9 @@ module Update
     end
     
     def run_command
-      `#{@command}`
-      @command_output = _
+      IO.popen(@command) do |io|
+        @command_output = io.gets
+      end
     end
 
     def check_exit_status
