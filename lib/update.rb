@@ -7,20 +7,15 @@ module Update
 
   class << self
     def run
-      run_commands
-      report_status
-    end
-    
-    private
-    
-    def run_commands
       Update::COMMANDS.each do |groups_of_commands|
         groups_of_commands.each do |run_together|
           @group = run_together
           run_group_in_new_thread
-        end
+        end.join { report_status }
       end
     end
+    
+    private
       
     def run_group_in_new_thread
       Thread.new do
