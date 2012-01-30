@@ -23,14 +23,17 @@ module Update
               
               `#{command}`; command_output = _
               check_for_failures
-              
-              green description
-              puts command_output
-              red @failure_report if @failure_report
+              print_io
             end
           end
         end
       end
+    end
+    
+    def print_io
+      green description
+      puts command_output
+      red @failure_report if @failure_report
     end
     
     def check_for_failures
