@@ -10,8 +10,8 @@ module Update
       Update::COMMANDS.each do |together|
         together.each do |run_together|
           @commands = run_together
-          run_in_new_thread
-        end.join { report_status }
+          run_in_new_thread.join { report_status }
+        end
       end
     end
     
