@@ -16,7 +16,7 @@ module Update
     end
     
     private
-      
+    
     def run_group_in_new_thread
       Thread.new do
         @group.each do |command, description|
