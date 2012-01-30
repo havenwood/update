@@ -14,15 +14,15 @@ module Update
     private
     
     def run_commands
-      Update::COMMANDS.each do |command_group|
-        command_group.each do |run_together|
+      Update::COMMANDS.each do |groups_of_commands|
+        groups_of_commands.each do |run_together|
           @run_together = run_together
-          run_group_of_commands_in_new_thread
+          run_groups_of_commands_together_in_new_thread
         end
       end
     end
       
-    def run_group_of_commands_in_new_thread
+    def run_groups_of_commands_together_in_new_thread
       Thread.new do
         @run_together.each do |command, description|
           @command = command
