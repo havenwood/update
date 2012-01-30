@@ -14,11 +14,18 @@ module Update
     private
     
     def run_commands
-      Update::COMMANDS.each do |command, description|
-        @command = command
-        green description
-        puts `#{command}`
-        check_for_failures
+      Update::COMMANDS.each do |command_group|
+        command_group.each do |run_together|
+          @run_together = run_together
+          Thread.new do
+            @run_together.each do |command, description|
+              @command = command
+              green description
+              puts `#{command}`
+              check_for_failures
+            end
+          end
+        end
       end
     end
     
