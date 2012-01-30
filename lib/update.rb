@@ -20,9 +20,14 @@ module Update
           Thread.new do
             @run_together.each do |command, description|
               @command = command
-              green description
-              puts `#{command}`
-              check_for_failures
+              [ Thread.current[:description] = { green description },
+                Thread.current[:command] = { puts `#{command}` },
+                Thread.current[:failures] = { check_for_failures }
+              ].each do |thread|
+                  thread.join
+                  puts thread.description, thread.command, thread.failures
+                end
+              end
             end
           end
         end
