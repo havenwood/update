@@ -8,29 +8,35 @@ module Update
   class << self
     def run
       Update::COMMANDS.each do |together|
-        together.each do |run_together|
-          @commands = run_together
-          @fiber = Fiber.new { run_commands }.resume
+        together.each do |commands|
+          @commands = commands
+          run_together
         end
       end
     end
     
     private
     
+    def run_together
+      Thread.new do
+        run_commands
+      end.run.join { report_final_status }
+    end
+    
     def run_commands
       @commands.each do |command, description|
         @command, @description = command, description
-        green description
-        puts run_command
-        check_exit_status
+        run_command
+        take_note_of_failures
       end
     end
     
     def run_command
-      `#{@command}`
+      green @description
+      puts `#{@command}`
     end
 
-    def check_exit_status
+    def take_note_of_failures
       unless $?.success?
         @failed ||= []
         @failed << @command
@@ -39,7 +45,7 @@ module Update
       end
     end
     
-    def report_status
+    def report_final_status
       if @failed
         red "Update process completed with failures.\a" #chirp
         @failed.each { |this_failed| puts "Command failed: '#{this_failed}'" }
