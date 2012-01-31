@@ -10,18 +10,20 @@ module Update
       Update::COMMANDS.each do |together|
         together.each do |commands|
           @commands = commands
-          run_together
+          #run_together
+          run_commands
         end
       end
+      report_final_status
     end
     
     private
     
-    def run_together
-      Thread.new do
-        run_commands
-      end.run.join { report_final_status }
-    end
+    #def run_together
+    #  Thread.new do
+    #    run_commands
+    #  end.run.join
+    #end
     
     def run_commands
       @commands.each do |command, description|
