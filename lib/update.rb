@@ -10,26 +10,27 @@ module Update
       Update::COMMANDS.each do |together|
         together.each do |run_together|
           @commands = run_together
-          run_in_new_thread.join { report_status }
+          run_in_new_thread  { report_status }
         end
       end
     end
     
     private
     
-    def run_in_new_thread
-      Thread.new do
-        @commands.each do |command, description|
+    def run_fibers
+      @commands.each do |command, description|
           @command, @description = command, description
-          run_command
-          check_exit_status
-          printout
+          @fiber = Fiber.new do
+            run_command
+            check_exit_status
+            printout
+          end.resume
         end
-      end.run
+      end
     end
     
     def run_command
-      @command_output = `#{@command}`
+      @fiber.yield puts `#{@command}`
     end
 
     def check_exit_status
@@ -41,17 +42,17 @@ module Update
     end
     
     def printout
-      green @description
-      puts @command_output
-      red @failure_report if @failure_report
+      @fiber.yield green @description
+      @fiber.yield puts @command_output
+      @fiber.yield red @failure_report if @failure_report
     end
     
     def report_status
       if @failed
-        red "Update process completed with failures.\a" #chirp
+        @fiber.yield red "Update process completed with failures.\a" #chirp
         @failed.each { |this_failed| puts "Command failed: '#{this_failed}'" }
       else
-        green "Update process completed successfully."
+        @fiber.yield green "Update process completed successfully."
       end
     end
   end
