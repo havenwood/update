@@ -19,11 +19,10 @@ module Update
     
     def run_commands
       @commands.each do |command, description|
-          @command, @description = command, description
-            green description
-            puts run_command
-            red check_exit_status
-          end
+        @command, @description = command, description
+          green description
+          puts run_command
+          check_exit_status
         end
       end
     end
