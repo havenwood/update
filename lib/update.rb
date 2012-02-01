@@ -8,18 +8,14 @@ module Update
   class << self
     def run
       Update::COMMANDS.each |commands|
-          @commands = commands
-          #run_together
-          run_commands
-        end
+        @commands = commands
+        run_commands
       end
       report_final_status
     end
     
     private
-    
-    #do |together|
-    #    together.each do 
+
     #def run_together
     #  Thread.new do
     #    run_commands
