@@ -3,13 +3,6 @@ module Update
     "brew update" => "Checking for updated Brew packages...",
     "brew upgrade" => "Installing updated Brew packages...",
     "brew cleanup --force" => "Cleaning up outdated packages...",
-      
-    ##
-    # Create additional command-groups by uncommenting the following-ish:
-    
-    # "ls -la" => "Look around...",
-    # "uname -a" => "Whatchamacallit...",
-
     "rvm get head --auto" => "Get the latest RVM...",
     "rvm 1.9.3-head do gem update --system" => "Update 1.9.3's RubyGems version...",
     "rvm 1.9.3-head do gem update" => "Update 1.9.3 gems...",

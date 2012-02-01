@@ -15,12 +15,6 @@ module Update
     end
     
     private
-
-    #def run_together
-    #  Thread.new do
-    #    run_commands
-    #  end.run.join
-    #end
     
     def run_commands
       @commands.each do |command, description|
