@@ -7,8 +7,7 @@ module Update
 
   class << self
     def run
-      Update::COMMANDS.each do |together|
-        together.each do |commands|
+      Update::COMMANDS.each |commands|
           @commands = commands
           #run_together
           run_commands
@@ -19,6 +18,8 @@ module Update
     
     private
     
+    #do |together|
+    #    together.each do 
     #def run_together
     #  Thread.new do
     #    run_commands
