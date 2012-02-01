@@ -18,15 +18,11 @@ module Update
     
     def run_commands
       @commands.each do |command, description|
-        @command, @description = command, description
-        run_command
+        @command = command
+        green description
+        puts `#{command}`
         take_note_of_failures
       end
-    end
-    
-    def run_command
-      green @description
-      puts `#{@command}`
     end
 
     def take_note_of_failures
