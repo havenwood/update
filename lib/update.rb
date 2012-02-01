@@ -7,7 +7,7 @@ module Update
 
   class << self
     def run
-      Update::COMMANDS.each |commands|
+      Update::COMMANDS.each do |commands|
         @commands = commands
         run_commands
       end
