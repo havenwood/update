@@ -9,5 +9,6 @@ module Update
     "rvm 1.9.3-head do gem cleanup -d" => "Show 1.9.3 gem cleanup dry-run...",
     "rvm rbx-head do gem update --system" => "Update Rubinius' RubyGems version...",
     "rvm rbx-head do gem update" => "Update Rubinius gems...",
-    "rvm rbx-head do gem cleanup -d" => "Show Rubinius gem cleanup dry-run..." }
+    "rvm rbx-head do gem cleanup -d" => "Show Rubinius gem cleanup dry-run..."
+  }
 end

@@ -22,7 +22,7 @@ module Update
     def take_note_of_failures command
       unless $?.success?
         @failed ||= []
-        @failed << @command
+        @failed << command
         @failure_report = "Command failed: '#{command}'"
         red @failure_report if @failure_report
       end
