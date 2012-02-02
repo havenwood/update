@@ -7,12 +7,10 @@ module Update
 
   class << self
     def run
-      Update::COMMANDS.each do |commands|
-        commands.each do |command, description|
-          green description
-          puts `#{command}`
-          take_note_of_failures command
-        end
+      Update::COMMANDS.each do |command, description|
+        green description
+        puts `#{command}`
+        take_note_of_failures command
       end
       report_final_status
     end
@@ -23,8 +21,7 @@ module Update
       unless $?.success?
         @failed ||= []
         @failed << command
-        @failure_report = "Command failed: '#{command}'"
-        red @failure_report if @failure_report
+        red "Command failed: '#{command}'"
       end
     end
     
