@@ -9,7 +9,7 @@ module Update
     def run
       Update::COMMANDS.each do |command, description|
         green description
-        puts `#{command}`
+        plain `#{command}`
         take_note_of_failures command
       end
       report_final_status
