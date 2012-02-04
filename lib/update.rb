@@ -1,15 +1,15 @@
 require "update/commands"
-require "update/rainbow"
+require "update/red-green"
 require "update/version"
 
 module Update
-  extend Rainbow
+  extend RedGreen
 
   class << self
     def run
       Update::COMMANDS.each do |command, description|
         green description
-        plain `#{command}`
+        puts `#{command}`
         take_note_of_failures command
       end
       report_final_status
