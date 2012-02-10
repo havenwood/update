@@ -6,22 +6,6 @@ module Update
     "rvm get head --auto" => "Get the latest RVM...",
     "gem update --system" => "Get the latest RubyGems...",
     "gem update" => "Update gems...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem cleanup -d" => "Show Rubinius gem cleanup dry-run..."
+    "gem cleanup -d" => "Show gem cleanup dry-run..."
   }
 end
