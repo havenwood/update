@@ -1,4 +1,6 @@
 module RedGreen
+  private
+
   def red text
     say "tput setaf 1", text
   end
@@ -6,8 +8,6 @@ module RedGreen
   def green text
     say "tput setaf 2", text
   end
-  
-  private
 
   def say color, text
     system color
