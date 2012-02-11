@@ -1,11 +1,11 @@
 module Update
   COMMANDS = {
-    "brew update" => "Checking for updated Brew packages...",
-    "brew upgrade" => "Installing updated Brew packages...",
+    "brew update"          => "Checking for updated Brew packages...",
+    "brew upgrade"         => "Installing updated Brew packages...",
     "brew cleanup --force" => "Cleaning up outdated packages...",
-    "rvm get head --auto" => "Get the latest RVM...",
-    "gem update --system" => "Get the latest RubyGems...",
-    "gem update" => "Update gems...",
-    "gem cleanup -d" => "Show gem cleanup dry-run..."
+    "rvm get head --auto"  => "Get the latest RVM...",
+    "gem update --system"  => "Get the latest RubyGems...",
+    "gem update"           => "Update gems...",
+    "gem cleanup --dryrun" => "Show gem cleanup dry-run..."
   }
 end
