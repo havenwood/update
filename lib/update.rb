@@ -8,20 +8,21 @@ module Update
   class << self
     def run
       Update::COMMANDS.each do |command, description|
+        @command = command
         green description
-        puts `#{command}`
-        take_note_of_a_failed command
+        puts `#@command`
+        take_note_if_command_fails
       end
       report_final_status
     end
     
     private
 
-    def take_note_of_a_failed command
+    def take_note_if_command_fails
       unless $?.success?
         @failed ||= []
-        @failed << command
-        red "Command failed: '#{command}'"
+        @failed << @command
+        red "Command failed: '#@command'"
       end
     end
     
