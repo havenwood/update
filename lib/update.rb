@@ -10,14 +10,14 @@ module Update
       Update::COMMANDS.each do |command, description|
         green description
         puts `#{command}`
-        take_note_of_failures command
+        take_note_of_any_failed command
       end
       report_final_status
     end
     
     private
 
-    def take_note_of_failures command
+    def take_note_of_any_failed command
       unless $?.success?
         @failed ||= []
         @failed << command
