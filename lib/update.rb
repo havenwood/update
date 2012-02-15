@@ -3,7 +3,9 @@ require "update/red-green"
 require "update/version"
 
 module Update
+	private
   extend RedGreen
+  public
 
   class << self
     def run
@@ -15,7 +17,7 @@ module Update
       end
       report_final_status
     end
-    
+
     private
 
     def take_note_if_command_fails

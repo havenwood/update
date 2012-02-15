@@ -1,12 +1,16 @@
 #!/usr/bin/env ruby
 require "update"
 require "slop"
+require "ap"
 
 Slop.parse(:help => true, :banner => "Usage: update [options]") do
   on :v, :version, "Print version information" do
     puts "Version #{Update::VERSION} on Ruby #{RUBY_VERSION}"
     puts "<shannonskipper@gmail.com>"
     exit
+	on :l, :list, "Print list of commands" do
+		ap Update::COMMANDS
+		exit
   end
 end
 
