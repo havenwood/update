@@ -3,8 +3,8 @@ require "update"
 require "slop"
 require "ap"
 
-Slop.parse(:help => true, :banner => "Usage: update [options]") do
-  on :v, :version, "Print version information" do
+opts = Slop.parse(:help => true, :banner => "Usage: update [options]") do
+	on :v, :version, "Print version information" do
     puts "Version #{Update::VERSION} on Ruby #{RUBY_VERSION}"
     puts "<shannonskipper@gmail.com>"
     exit
@@ -13,7 +13,7 @@ Slop.parse(:help => true, :banner => "Usage: update [options]") do
 	on :l, :list, "Print list of commands" do
 		ap Update::COMMANDS
 		exit
-  end
+	end
 end
 
 Update.run
