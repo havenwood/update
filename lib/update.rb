@@ -3,9 +3,7 @@ require "update/red-green"
 require "update/version"
 
 module Update
-	private
   extend RedGreen
-  public
 
   class << self
     def run
