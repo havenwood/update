@@ -11,13 +11,18 @@ opts = Slop.parse(:help => true, :banner => "Usage: update [options]") do
 	end
 	
 	on :l, :list, "Print list of commands" do
-		ap Update::COMMANDS
+		ap Update::commands
 		exit
 	end
 	
-	on :a, :add, "Add commands. Usage: update -a 'cd', 'Change directory..." do |new_command|
-		commmand, description = new_command.split
-		Update::COMMANDS[command.to_sym] = description
+	on :a, :add, "Add a command to the list of commands" do
+		prints "Command to add to your list (including any arguments): "
+		command = gets.chomp
+		puts
+		prints "Enter human-readable description of the above command."
+		description = gets.chomp
+		Update::commands["#{command}"] = description
+		ap Update::commands
 	end
 end
 
