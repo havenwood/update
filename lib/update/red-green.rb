@@ -1,6 +1,4 @@
 module RedGreen
-  private
-
   def red text
     say "tput setaf 1", text
   end
