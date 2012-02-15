@@ -15,7 +15,7 @@ opts = Slop.parse(:help => true, :banner => "Usage: update [options]") do
 		exit
 	end
 	
-	on :a, :add, "Add a command and explanation" do |new_command|
+	on :a, :add, "Add commands. Usage: update -a 'cd', 'Change directory..." do |new_command|
 		commmand, description = new_command.split
 		Update::COMMANDS[command.to_sym] = description
 	end
