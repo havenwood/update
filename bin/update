@@ -5,7 +5,7 @@ require "ap"
 
 opts = Slop.parse(help: true, 
                   banner: "Usage: update [options]", 
-                  ignore_case:true, 
+                  ignore_case: true, 
                   strict: true) do
 
 	on :v, :version, "Print version information" do
@@ -20,4 +20,4 @@ opts = Slop.parse(help: true,
 	end
 end
 
-Update.run if opts.to_hash[:help].nil?
+Update.run
