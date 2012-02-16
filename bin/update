@@ -9,8 +9,8 @@ opts = Slop.parse(help: true,
                   strict: true) do
 
 	on :v, :version, "Print version information" do
-    puts "Version #{Update::VERSION} on Ruby #{RUBY_VERSION}"
-    puts "<shannonskipper@gmail.com>"
+    puts "Version #{Update::VERSION} on Ruby #{RUBY_VERSION}."
+    green "<shannonskipper@gmail.com>"
     exit
 	end
 	
@@ -18,6 +18,18 @@ opts = Slop.parse(help: true,
 		ap Update::COMMANDS
 		exit
 	end
+
+  on :e, :edit, "Edit list of commands" do
+    puts "Edit the list of commands and descriptions. Usage:"
+    puts
+    puts "cd #{File.expand_path('..',__FILE__)}"
+    puts
+    puts "Then open 'commands.rb' with a text editor..."
+    puts "and add your command and description to the Hash."
+    puts
+    puts "TODO: Better (read 'sane') way of doing this..."
+    exit
+  end
 end
 
 Update.run
