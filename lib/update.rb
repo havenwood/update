@@ -7,7 +7,7 @@ module Update
 
   class << self
     def run
-      Update::commands.each do |command, description|
+      Update::COMMANDS.each do |command, description|
         @command = command
         green description
         puts `#@command`

@@ -1,5 +1,5 @@
 module Update
-  commands = {
+  COMMANDS = {
     "brew update"          => "Checking for updated Brew packages...",
     "brew upgrade"         => "Installing updated Brew packages...",
     "brew cleanup --force" => "Cleaning up outdated packages...",
