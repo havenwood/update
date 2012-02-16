@@ -19,5 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   
   s.add_development_dependency "slop", "~> 3.0"
+  s.add_development_dependency "awesome_print", "~> 0.1"
   s.add_runtime_dependency "slop", "~> 3.0"
+  s.add_runtime_dependency "awesome_print", "~> 0.1"
 end
