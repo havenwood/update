@@ -21,3 +21,4 @@ opts = Slop.parse(help: true,
 end
 
 Update.run unless opts.help == true
+binding.pry
