@@ -10,7 +10,7 @@ opts = Slop.parse(help: true,
 
 	on :v, :version, "Print version information" do
     puts "Version #{Update::VERSION} on Ruby #{RUBY_VERSION}."
-    green "<shannonskipper@gmail.com>"
+    puts "<shannonskipper@gmail.com>"
     exit
 	end
 	
