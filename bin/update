@@ -20,13 +20,10 @@ opts = Slop.parse(help: true,
 	end
 
   on :e, :edit, "Edit list of commands" do
-    puts "Edit the list of commands and descriptions. Usage:"
-    puts
-    puts "cd #{File.expand_path('../../lib/update',__FILE__)}"
-    puts
+    puts "Edit the list of commands and descriptions. Usage:\n"
+    puts "cd #{File.expand_path('../../lib/update',__FILE__)}\n"
     puts "Then open 'commands.rb' with a text editor..."
-    puts "and add your command and description to the Hash."
-    puts
+    puts "and add your command and description to the Hash.\n"
     puts "TODO: Better (read 'sane') way of doing this..."
     exit
   end
