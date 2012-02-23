@@ -30,6 +30,7 @@ module Update
       if @failed
         red "Update process completed with failures.\a" #chirp
         @failed.each { |this_failed| puts "Command failed: '#{this_failed}'" }
+        exit 1
       else
         green "Update process completed successfully."
       end
