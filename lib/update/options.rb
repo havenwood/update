@@ -16,7 +16,7 @@ module Update
       on :e, :edit, "Edit list of commands" do
         puts "Edit the list of commands and descriptions. Usage:"
         puts
-        puts "cd #{File.expand_path('../../lib/update',__FILE__)}"
+        puts "cd #{File.expand_path('../..',__FILE__)}"
         puts
         puts "Then open 'commands.rb' with a text editor... and add your command and description to the list."
         puts "TODO: Better (read 'sane') way of doing this..."
