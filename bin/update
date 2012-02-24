@@ -4,5 +4,4 @@ require "slop"
 require "ap"
 
 Update.parse_options
-
 Update.run
