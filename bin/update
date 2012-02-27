@@ -2,6 +2,8 @@
 require "update"
 require "slop"
 require "ap"
+require 'em-synchrony'
+require 'em-synchrony/fiber_iterator'
 
 Update.parse_options
 Update.run
