@@ -3,28 +3,28 @@ module Update
 
   class << self
     def run
-			Update::COMMAND_GROUPS.each do |commands|
-			  @commands = commands
+      Update::COMMAND_GROUPS.each do |commands|
+        @commands = commands
 
-			  EM.synchrony do
-			    EM::Synchrony::FiberIterator.new(@commands).each do |command, description|
+        EM.synchrony do
+          EM::Synchrony::FiberIterator.new(@commands).each do |command, description|
             @command = command
 
-			      @results ||= {}
+            @results ||= {}
             @results["#{description}"] = `#@command`
 
             take_note_if_command_fails #TODO: make this work with EM
-			    end
+          end
 
           @results.each do |description, result|
             green description
             puts result
           end
 
-			    EventMachine.stop
-			  end
-			end
-			
+          EventMachine.stop
+        end
+      end
+      
       report_final_status
     end
 
