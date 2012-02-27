@@ -9,7 +9,7 @@ module Update
       end
       
       on :l, :list, "Print list of commands" do
-        ap Update::COMMANDS
+        ap Update::COMMAND_GROUPS
         exit
       end
 
