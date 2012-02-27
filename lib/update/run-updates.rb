@@ -8,13 +8,14 @@ module Update
 
 			  EM.synchrony do
 			    EM::Synchrony::FiberIterator.new(@commands).each do |command, description|
-			      @results << description
-			      @results << `#{command}`
+            @command = command
+
+			      red description
+			      green `#@command`
 			
 						take_note_if_command_fails
 			    end
 
-			    @results.each { |result| puts result }
 			    EventMachine.stop
 			  end
 			end
