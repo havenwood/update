@@ -13,7 +13,7 @@ module Update
 			      @results ||= {}
             @results["#{description}"] = `#@command`
 
-            take_note_if_command_fails
+            take_note_if_command_fails #TODO: make this work with EM
 			    end
 
           @results.each do |description, result|
