@@ -1,4 +1,4 @@
-# Update: a gem to run a list of updates
+# Update: a gem to run a groups of updates in thier own fiber
 Update is a simple Ruby script for running sets of updates asynchronously from your command line. Update uses EM::Syncrony's FiberIterator to run each set of updates in its own Fiber and then print out results as they become available. Requires Ruby 1.9+.
 ##Installation and usage
 ```ruby
