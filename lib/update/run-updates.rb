@@ -10,11 +10,16 @@ module Update
 			    EM::Synchrony::FiberIterator.new(@commands).each do |command, description|
             @command = command
 
-			      red description
-			      green `#@command`
-			
-						take_note_if_command_fails
+			      @results ||= {}
+            @results["#{description}"] = `#@command`
+
+            take_note_if_command_fails
 			    end
+
+          @results.each do |description, result|
+            green description
+            puts result
+          end
 
 			    EventMachine.stop
 			  end
@@ -29,7 +34,6 @@ module Update
       unless $?.success?
         @failed ||= []
         @failed << @command
-        red "Command failed: '#@command'"
       end
     end
     
