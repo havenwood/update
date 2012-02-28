@@ -4,7 +4,7 @@ module Update
   class << self
     def run
       EM.synchrony do
-        asyncronously_iterate_over_command_groups
+        asynchronously_iterate_over_command_groups
       end
       
       report_final_status
@@ -12,7 +12,7 @@ module Update
 
     private
 
-    def asyncronously_iterate_over_command_groups
+    def asynchronously_iterate_over_command_groups
       EM::Synchrony::FiberIterator.new(Update::COMMAND_GROUPS).each do |commands|
         @commands = commands
 
