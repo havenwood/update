@@ -3,26 +3,8 @@ module Update
 
   class << self
     def run
-      Update::COMMAND_GROUPS.each do |commands|
-        @commands = commands
-
-        EM.synchrony do
-          EM::Synchrony::FiberIterator.new(@commands).each do |command, description|
-            @command = command
-
-            @results ||= {}
-            @results["#{description}"] = `#@command`
-
-            take_note_if_command_fails #TODO: make this work with EM
-          end
-
-          @results.each do |description, result|
-            green description
-            puts result
-          end
-
-          EventMachine.stop
-        end
+      EM.synchrony do
+        asyncronously_iterate_over_command_groups
       end
       
       report_final_status
@@ -30,10 +12,44 @@ module Update
 
     private
 
+    def asyncronously_iterate_over_command_groups
+      EM::Synchrony::FiberIterator.new(Update::COMMAND_GROUPS).each do |commands|
+        @commands = commands
+
+        synchronously_run_commands_within_each_command_group
+      end
+
+      EventMachine.stop
+    end
+
+    def synchronously_run_commands_within_each_command_group
+      @commands.each do |command, description|
+        @command, @description = command, description
+
+        run_commands_in_each_command_group
+
+        take_note_if_command_fails
+      end
+
+      display_results_of_command_group
+    end
+
+    def run_commands_in_each_command_group
+      @results ||= {}
+      @results["#{@description}"] = `#@command`
+    end
+
     def take_note_if_command_fails
       unless $?.success?
         @failed ||= []
         @failed << @command
+      end
+    end
+
+    def display_results_of_command_group
+      @results.each do |description, result|
+        green @description
+        puts result
       end
     end
     
