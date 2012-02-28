@@ -1,13 +1,21 @@
 module Update
   COMMAND_GROUPS = [
-    {"brew update"          => "Checking for updated Brew packages...",
-     "brew upgrade"         => "Installing updated Brew packages...",
-     "brew cleanup --force" => "Cleaning up outdated packages..."},
+    {
+      "brew update"          => "Checking for updated Brew packages...",
+      "brew upgrade"         => "Installing updated Brew packages...",
+      "brew cleanup --force" => "Cleaning up outdated packages..."
+    },
 
-    {"rvm get head --auto"  => "Get the latest RVM..."},
+  ### Add new command groups by uncommenting a hash such as below:
+  # {
+  #   "rvm get head --auto"  => "Getting the latest RVM...",
+  #   "rvm cleanup all"      => "Cleaning up everything RVM..."
+  # },
     
-    {"gem update --system"  => "Get the latest RubyGems...",
-     "gem update"           => "Update gems...",
-     "gem cleanup --dryrun" => "Show gem cleanup dry-run..."}
+    { 
+      "gem update --system"  => "Getting the latest RubyGems...",
+      "gem update"           => "Updating gems...",
+      "gem cleanup --dryrun" => "Showing gem cleanup dry-run..."
+    }
   ]
 end
