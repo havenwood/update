@@ -13,7 +13,7 @@ class TestUpdate < MiniTest::Unit::TestCase
 
   def test_edit
     edit = `update -e`
-    assert true, "Yes, I'm asserting that true is true. This feature is not implemented nor really even envisioned yet."
+    assert_equal edit, "Something sane, which this is not..."
   end
 
   def test_help
