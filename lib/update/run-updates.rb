@@ -4,7 +4,6 @@ module Update
   class << self
     def run
       EM.synchrony do
-
         asynchronously_iterate_over_command_groups
       end
       
