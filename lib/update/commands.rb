@@ -6,11 +6,11 @@ module Update
       "brew cleanup --force" => "Cleaning up outdated packages..."
     },
 
-  ### Add new command groups by uncommenting a hash such as below:
-  # {
-  #   "rvm get head --auto"  => "Getting the latest RVM...",
-  #   "rvm cleanup all"      => "Cleaning up everything RVM..."
-  # },
+  	### Add new command groups by uncommenting a hash such as below:
+	  # {
+	  #   "rvm get head --auto"  => "Getting the latest RVM...",
+	  #   "rvm cleanup all"      => "Cleaning up everything RVM..."
+	  # },
     
     { 
       "gem update --system"  => "Getting the latest RubyGems...",
