@@ -4,6 +4,7 @@ module Update
   class << self
     def run
       EM.synchrony do
+<<<<<<< HEAD
         asynchronously_iterate_over_command_groups
       end
       
@@ -18,10 +19,16 @@ module Update
 
         synchronously_run_commands_within_each_command_group
       end
+=======
+        EM::Synchrony::FiberIterator.new(Update::COMMAND_GROUPS).each do |commands|
+          commands.each do |command, description|
+            @command = command
+>>>>>>> decd17cc3beee1747212fae05bdde97b94263337
 
       EventMachine.stop
     end
 
+<<<<<<< HEAD
     def synchronously_run_commands_within_each_command_group
       @commands.each do |command, description|
         @command, @description = command, description
@@ -29,6 +36,18 @@ module Update
         run_commands_in_each_command_group
 
         take_note_if_command_fails
+=======
+            take_note_if_command_fails
+          end
+
+          @results.each do |description, result|
+            green description
+            puts result
+          end
+        end
+
+        EventMachine.stop
+>>>>>>> decd17cc3beee1747212fae05bdde97b94263337
       end
 
       display_results_of_command_group
