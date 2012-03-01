@@ -17,11 +17,13 @@ module Update
     def asynchronously_iterate_over_command_groups
       EM::Synchrony::FiberIterator.new(Update::COMMAND_GROUPS).each do |commands|
         commands.each do |command, description|
-          @command, @description = command, description #PROBLEM
+          @results ||= {}
+          @results["#{@description}"] = `#@command`
 
-          synchronously_run_commands_within_each_command_group
-
-          take_note_if_command_fails
+          unless $?.success?
+            @failed ||= []
+            @failed << command
+          end
         end
 
         display_results_of_command_group
@@ -30,21 +32,9 @@ module Update
       EventMachine.stop
     end
 
-    def synchronously_run_commands_within_each_command_group
-      @results ||= {}
-      @results["#{@description}"] = `#@command`
-    end
-
-    def take_note_if_command_fails
-      unless $?.success?
-        @failed ||= []
-        @failed << @command
-      end
-    end
-
     def display_results_of_command_group
       @results.each do |description, result|
-        green @description
+        green description
         puts result
       end
     end
