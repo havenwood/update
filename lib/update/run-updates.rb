@@ -24,7 +24,7 @@ module Update
           end
         end
 
-        display_results_of_command_group
+        display_results_of_command_group #results for 'rvm get head' or other lengthy commands display early
       end
 
       EventMachine.stop
