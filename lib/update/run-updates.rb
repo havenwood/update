@@ -5,6 +5,8 @@ module Update
     def run
       EM.synchrony do
         asynchronously_iterate_over_command_groups
+
+        EventMachine.stop
       end
       
       report_final_status
@@ -24,10 +26,8 @@ module Update
           end
         end
 
-        display_results_of_command_group #results for 'rvm get head' or other lengthy commands display early
+        display_results_of_command_group #results for 'rvm get head' or other lengthy commands display early?
       end
-
-      EventMachine.stop
     end
 
     def display_results_of_command_group
