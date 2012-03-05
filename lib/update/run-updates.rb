@@ -5,15 +5,7 @@ class Update
   include RedGreen
 
   def run
-    asynchronously_iterate_over_command_groups
-      
-    report_final_status
-  end
-
-  private
-
-  def asynchronously_iterate_over_command_groups
-    Update::COMMAND_GROUPS.each do |commands|
+    Update::COMMAND_GROUPS.each! do |commands|
       commands.each do |command, description|
         @results ||= {}
         @results["#{description}"] = `#{command}`
@@ -26,6 +18,8 @@ class Update
 
       display_results_of_command_group
     end
+      
+    report_final_status
   end
 
   def display_results_of_command_group

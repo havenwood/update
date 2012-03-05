@@ -2,7 +2,6 @@
 require "update"
 require "slop"
 require "ap"
-require "celluloid"
 
 update = Update.new
 update.parse_options
