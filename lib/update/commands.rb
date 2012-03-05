@@ -1,4 +1,4 @@
-module Update
+class Update
   COMMAND_GROUPS = [
     {
       "brew update"          => "Checking for updated Brew packages...",

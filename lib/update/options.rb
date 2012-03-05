@@ -1,5 +1,5 @@
-module Update
-  def self.parse_options
+class Update
+  def parse_options
     options = Slop.parse(help: true, 
                          banner: "Usage: update [options]") do
       on :v, :version, "Print version information" do
