@@ -3,9 +3,7 @@ module Update
 
   class << self
     def run
-      EM.synchrony do
-        asynchronously_iterate_over_command_groups
-      end
+      asynchronously_iterate_over_command_groups
       
       report_final_status
     end
@@ -13,7 +11,7 @@ module Update
     private
 
     def asynchronously_iterate_over_command_groups
-      EM::Synchrony::FiberIterator.new(Update::COMMAND_GROUPS).each do |commands|
+      Update::COMMAND_GROUPS.each! do |commands|
         commands.each do |command, description|
           @results ||= {}
           @results["#{description}"] = `#{command}`
@@ -24,10 +22,8 @@ module Update
           end
         end
 
-        display_results_of_command_group #results for 'rvm get head' or other lengthy commands display early?
+        display_results_of_command_group
       end
-
-      EventMachine.stop
     end
 
     def display_results_of_command_group

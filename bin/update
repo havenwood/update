@@ -2,8 +2,7 @@
 require "update"
 require "slop"
 require "ap"
-require 'em-synchrony'
-require 'em-synchrony/fiber_iterator'
+require 'celluloid/io'
 
 Update.parse_options
 Update.run

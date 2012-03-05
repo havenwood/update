@@ -20,8 +20,8 @@ Gem::Specification.new do |s|
   
   s.add_development_dependency "slop", "~> 2.4"
   s.add_development_dependency "awesome_print", "~> 1.0"
-  s.add_development_dependency "em-synchrony", "~> 1.0"
+  s.add_development_dependency "celluloid/io"
   s.add_runtime_dependency "slop", "~> 2.4"
   s.add_runtime_dependency "awesome_print", "~> 1.0"
-  s.add_runtime_dependency "em-synchrony", "~> 1.0"
+  s.add_runtime_dependency "celluloid/io"
 end
