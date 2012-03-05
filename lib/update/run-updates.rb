@@ -1,5 +1,6 @@
 module Update
   extend RedGreen
+  extend Celluloid::IO
 
   class << self
     def run
