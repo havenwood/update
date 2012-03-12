@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-require "update"
-require "slop"
-require "ap"
+require 'update'
+require 'slop'
+require 'ap'
 require 'em-synchrony'
 require 'em-synchrony/fiber_iterator'
 
