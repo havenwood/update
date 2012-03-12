@@ -16,7 +16,7 @@ module Update
       EM::Synchrony::FiberIterator.new(Update::COMMAND_GROUPS).each do |commands|
         commands.each do |command, description|
           @results ||= {}
-          @results["#{description}"] = `#{command}`
+          @results["#{description}"] = `set -o pipefail; #{command}`
 
           unless $?.success?
             @failed ||= []
