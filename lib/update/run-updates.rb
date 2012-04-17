@@ -1,11 +1,18 @@
 require 'celluloid'
 
+module Enumerable
+  def each(&block)
+    futures = map { |elem| Celluloid::Future.new(elem, &block) }
+    futures.map { |future| future.value }
+  end
+end
+
 class Update
   include Celluloid
   include RedGreen
 
   def run
-    Update::COMMAND_GROUPS.each! do |commands|
+    Update::COMMAND_GROUPS.each do |commands|
       commands.each do |command, description|
         @results ||= {}
         @results["#{description}"] = `#{command}`

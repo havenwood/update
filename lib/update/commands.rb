@@ -5,10 +5,6 @@ class Update
       "brew upgrade"         => "Installing updated Brew packages...",
       "brew cleanup --force" => "Cleaning up outdated packages..."
     },
-
-	  {
-	    "rvm get head --auto"  => "Getting the latest RVM..."
-	  },
     
     { 
       "gem update --system"  => "Getting the latest RubyGems...",
