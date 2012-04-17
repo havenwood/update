@@ -1,14 +1,6 @@
-require 'celluloid'
-
-module Enumerable
-  def each(&block)
-    futures = map { |elem| Celluloid::Future.new(elem, &block) }
-    futures.map { |future| future.value }
-  end
-end
+require_relative 'async'
 
 class Update
-  include Celluloid
   include RedGreen
 
   def run
