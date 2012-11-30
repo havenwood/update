@@ -5,7 +5,7 @@ require "update/version"
 Gem::Specification.new do |s|
   s.name        = "update"
   s.version     = Update::VERSION
-  s.authors     = ["shan"]
+  s.authors     = ["Shannon Skipper"]
   s.email       = ["shannonskipper@gmail.com"]
   s.homepage    = "https://github.com/havenwood/update"
   s.summary     = %q{a gem to run a list of updates}
